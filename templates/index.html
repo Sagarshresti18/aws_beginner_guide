@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS Flask Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>AWS Input Form</h1>
+
+        <input type="text" id="userName" placeholder="Enter your name..." />
+        <input type="number" id="userNumber" placeholder="Enter your number..." />
+        <input type="file" id="userPhoto" accept="image/*" placeholder="Upload photo" />
+
+        <button onclick="submitData()">Submit</button>
+
+        <p id="response"></p>
+        
+        <br>
+        <a href="/view-all" style="color: #22c55e; text-decoration: none;">
+            📊 View All Stored Data
+        </a>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

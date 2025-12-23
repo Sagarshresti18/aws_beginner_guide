@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <style>
+        .data-container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .data-item {
+            background: #1e293b;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #334155;
+        }
+        .data-item img {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .data-item h3 {
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+        .data-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 All Stored Data</h1>
+        <a href="/" style="color: #22c55e;">← Back to Home</a>
+    </div>
+    
+    <div class="data-container">
+        {% if items %}
+            {% for item in items %}
+            <div class="data-item">
+                <h3>Entry #{{ loop.index }}</h3>
+                <p><strong>ID:</strong> {{ item.id[:8] }}...</p>
+                <p><strong>Name:</strong> {{ item.name }}</p>
+                <p><strong>Number:</strong> {{ item.number }}</p>
+                {% if item.timestamp %}
+                <p><strong>Time:</strong> {{ item.timestamp }}</p>
+                {% endif %}
+                {% if item.photo %}
+                <p><strong>Photo:</strong></p>
+                <img src="{{ item.photo }}" alt="Uploaded photo">
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; color: #e5e7eb;">No data found!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
